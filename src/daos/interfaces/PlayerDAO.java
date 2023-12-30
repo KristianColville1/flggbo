@@ -1,4 +1,4 @@
-package daos;
+package daos.interfaces;
 
 import models.Player;
 import java.util.List;

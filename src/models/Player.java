@@ -26,5 +26,29 @@ public class Player {
         this.email = email;
     }
 
+    // Getters
+    public int getPlayerId() {
+        return playerId;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    // Setters
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
