@@ -8,10 +8,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import controllers.RootController;
 import utils.ColorConstants;
 
+/**
+ * Starting view of the application. This is the main frame passed to all other views.
+ */
 public class RootView extends JFrame {
+    private RootController controller;
+    private MenuView menuView;
+
     public RootView() {
+        this.controller = new RootController(this);
+        this.menuView = new MenuView();
+        setJMenuBar(menuView);
         setTitle("Fantasy Great British Bake-Off League");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUpAppDimensions();
@@ -25,12 +35,15 @@ public class RootView extends JFrame {
     }
 
     public void buildRoot() {
+        // reset the entire window (for using more than once)
+        getContentPane().removeAll();
+        getContentPane().repaint();
+
+        // defaults of root view
         setLayout(null);
         getContentPane().setBackground(ColorConstants.ROYAL_BLUE);
-
         addMenuButtons();
         addLogo();
-
         repaint();
     }
 
@@ -51,8 +64,7 @@ public class RootView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+                controller.handleEnterAction();
             }
 
         });
@@ -83,4 +95,16 @@ public class RootView extends JFrame {
         return (int) height;
     }
 
+    /**
+     * Clears the main window
+     */
+    public void clearView() {
+        getContentPane().removeAll();
+        getContentPane().repaint();
+    }
+
+    public void returnToRoot() {
+        clearView();
+        buildRoot();
+    }
 }
